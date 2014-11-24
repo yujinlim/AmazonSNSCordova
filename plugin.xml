@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+            id="com.redapesolutions.sns" 
+            version="0.0.1">
+        <name>Amazon SNS Cordova</name>
+        <description>Redape solutions Amazon SNS Service</description>
+        <license>Apache 2.0</license>
+        <keywords>cordova,device</keywords>
+        <engines>
+            <engine name="cordova" version=">=3.0.0" />
+        </engines>
+
+        <js-module src="www/ra-sns.js" name="sns">
+            <clobbers target="sns" />
+        </js-module>
+
+        <platform name="android">
+            <config-file target="res/xml/config.xml" parent="/*">
+                <feature name="sns">
+                    <param name="android-package" value="com.redapesolutions.sns.AmazonSNS" />
+                </feature>
+            </config-file>
+
+            <source-file src="platforms/android/AmazonSNS.java" target-dir="src/com/redapesolutions/sns" />
+            <!-- JAR libraries -->
+            <source-file src="platforms/android/lib/aws-android-sdk-2.1.5-sns.jar" target-dir="libs" />
+            <source-file src="platforms/android/lib/aws-android-sdk-2.1.5-core.jar" target-dir="libs" />
+        </platform>
+    </plugin>
